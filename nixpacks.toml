@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ['php81', 'php81Packages.composer']
+
+[phases.build]
+cmds = ['echo "Build phase - no composer.json found, skipping composer install"']
+
+[start]
+cmd = 'php -S 0.0.0.0:$PORT -t .'
