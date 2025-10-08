@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "framework": null,
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.7.1"
+    }
+  },
+  "routes": [
+    {
+      "src": "/build/(.*)",
+      "dest": "/public/build/$1"
+    },
+    {
+      "src": "/storage/(.*)",
+      "dest": "/storage/app/public/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/public/favicon.ico"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/public/robots.txt"
+    },
+    {
+      "src": "/(.*\\.(css|js|ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "false",
+    "LOG_CHANNEL": "stderr",
+    "SESSION_DRIVER": "cookie",
+    "CACHE_DRIVER": "array"
+  },
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "installCommand": "npm install && composer install --no-dev --optimize-autoloader"
+}
