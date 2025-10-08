@@ -1,0 +1,13 @@
+
+services:
+  app:
+    build: .
+    container_name: laravel_template
+    working_dir: /app
+    ports:
+      - "9006:80"
+      # - "9003:443"  # FrankenPHP berjalan di port 80
+    volumes:
+      - .:/app
+      - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./CaddyFile.dev:/etc/caddy/Caddyfile

@@ -1,0 +1,20 @@
+
+services:
+  app:
+    build: .
+    container_name: kpi2024_dev
+    working_dir: /app
+    # environment:
+    #   - FRANKENPHP_CONFIG="worker /app/public/index.php"
+      # - SERVER_NAME="10.10.8.12"
+    ports:
+      - "9006:80"
+      # - "9003:443"  # FrankenPHP berjalan di port 80
+    volumes:
+      # - .:/app
+      - /var/www/data/kpi24/logs:/app/storage/logs #set nama folder sesuai project
+      - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./CaddyFile.dev:/etc/caddy/Caddyfile
+      - laravel_composer_cache:/var/www/html/vendor
+volumes:
+  laravel_composer_cache:

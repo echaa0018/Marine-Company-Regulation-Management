@@ -1,0 +1,247 @@
+/* Import Tailwind CSS framework */
+@import 'tailwindcss';
+
+/* Custom theme configuration with system font stack */
+@theme {
+    --font-sans: 'Inter var', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* Include Tailwind CSS plugins for enhanced form styling and typography */
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+/* Remove default red box-shadow on invalid form elements */
+input:invalid, textarea:invalid, select:invalid {
+    box-shadow: none;
+}
+
+/* Hide elements with x-cloak attribute (used with Alpine.js) until JavaScript loads */
+[x-cloak] {
+    display: none;
+}
+
+
+/* maryUI */
+@source "../../vendor/robsontenorio/mary/src/View/Components/**/*.php";
+
+/* Theme toggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/**
+* Paginator - Traditional style
+* Because Laravel defaults does not match well the design of daisyUI.
+*/
+
+@layer base {
+ [type="text"],
+  input:not([type]),
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    @apply bg-base-100 outline-none text-xs ring-0 border-none  rounded-md ring-offset-0;
+    --tw-ring-color: transparent;
+     &:focus {
+      @apply bg-base-100 outline-none text-base ring-0 border-none  rounded-md ring-offset-0 px-0;
+      --tw-ring-color: transparent;
+    }
+  }
+
+[type="text"]:focus,
+    input:focus,
+    textarea:focus,
+    select:focus {
+    @apply bg-base-100 outline-none ring-0 text-xs border-none  rounded-md ring-offset-0;
+    --tw-ring-color: transparent;
+    }
+
+  select {
+    display: flex;
+    align-items: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    line-height: 1.25;
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+}
+
+.mary-table-pagination {
+    button, span {
+        @apply text-xs border-none !text-base-content
+    }
+
+    button {
+        @apply cursor-pointer !bg-base-100
+    }
+
+    span[aria-current="page"] > span {
+        @apply bg-base-content/5
+    }
+
+    button, span[aria-current="page"] > span, span[aria-disabled="true"] span {
+        @apply py-1 px-2 bg-base-200
+    }
+}
+
+.mary-table-pagination button {
+    height: 32px;      /* Atur tinggi sesuai keinginan */
+    min-height: 0;     /* Override default DaisyUI */
+    line-height: 1;    /* Biar teks nggak ketarik */
+    padding: 0 0.75rem; /* Padding horizontal */
+    font-size: 0.75rem; /* Sesuaikan ukuran teks */
+}
+
+/* .btn {
+  @apply btn-sm;
+} */
+
+
+/**
+    The lines above are intact.
+    The lines below were added by maryUI installer.
+*/
+
+/** daisyUI */
+@plugin "daisyui" {
+    themes: fantasy --default, dark --preferslight;
+}
+
+
+
+@plugin "daisyui/theme" {
+    name: "fantasy";
+    default: true;
+    prefersdark: false;
+    color-scheme: "light";
+    --color-base-100: oklch(98% 0.003 247.858);
+    --color-base-200: oklch(93% 0 0);
+    --color-base-300: oklch(86% 0 0);
+    --color-base-content: oklch(27.807% 0.029 256.847);
+    --color-primary: oklch(52% 0.15 15);
+    --color-primary-content: oklch(98% 0.003 247.858);
+    --color-secondary: oklch(53.92% 0.162 241.36);
+    --color-secondary-content: oklch(98% 0.003 247.858);
+    --color-accent: oklch(75.98% 0.204 56.72);
+    --color-accent-content: oklch(15.196% 0.04 56.72);
+    --color-neutral: oklch(27.807% 0.029 256.847);
+    --color-neutral-content: oklch(98% 0.003 247.858);
+    --color-info: oklch(72.06% 0.191 231.6);
+    --color-info-content: oklch(0% 0 0);
+    --color-success: oklch(64.8% 0.15 160);
+    --color-success-content: oklch(0% 0 0);
+    --color-warning: oklch(84.71% 0.199 83.87);
+    --color-warning-content: oklch(0% 0 0);
+    --color-error: oklch(71.76% 0.221 22.18);
+    --color-error-content: oklch(0% 0 0);
+    --radius-selector: 0.5rem;
+    --radius-field: 0.25rem;
+    --radius-box: 0.5rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 0;
+  }
+
+
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(25.33% 0.016 252.42);
+  --color-base-200: oklch(27% 0.006 286.033);
+  --color-base-300: oklch(21.15% 0.012 254.09);
+  --color-base-content: oklch(97.807% 0.029 256.847);
+  --color-primary: oklch(52% 0.15 15);
+  --color-primary-content: oklch(96% 0.018 272.314);
+  --color-secondary: oklch(65% 0.241 354.308);
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: oklch(0.6218 0.1916 23.98);
+  --color-accent-content: oklch(0.8975 0 0 / 86.67%);
+  --color-neutral: oklch(14% 0.005 285.823);
+  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: oklch(44% 0.177 26.899);
+  --color-error-content: oklch(98% 0.003 247.858);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* Custom utilities for better card layout */
+@layer utilities {
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Alert backgrounds using DaisyUI semantic colors */
+  .alert-error {
+    @apply bg-error/10 border-error/20 text-error-content;
+  }
+
+  .alert-success {
+    @apply bg-success/10 border-success/20 text-success-content;
+  }
+
+  .alert-warning {
+    @apply bg-warning/10 border-warning/20 text-warning-content;
+  }
+
+  .alert-info {
+    @apply bg-info/10 border-info/20 text-info-content;
+  }
+
+  /* Use DaisyUI semantic text colors */
+  .text-primary-theme {
+    @apply text-primary;
+  }
+
+  .text-secondary-theme {
+    @apply text-secondary;
+  }
+
+  .text-accent-theme {
+    @apply text-accent;
+  }
+
+  .text-content-primary {
+    @apply text-base-content;
+  }
+
+  .text-content-secondary {
+    @apply text-base-content/70;
+  }
+
+  .text-content-tertiary {
+    @apply text-base-content/50;
+  }
+}
