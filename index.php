@@ -9,6 +9,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY id DESC");
 <html>
 <head>	
 	<title>Homepage</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
